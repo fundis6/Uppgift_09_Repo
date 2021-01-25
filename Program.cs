@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Uppgift_09_Repo
 {
@@ -6,59 +7,84 @@ namespace Uppgift_09_Repo
     {
         static void Main(string[] args)
         {
-            string choice;
-            int playerWinCount;
-            int computerWinCount;
+            string playerChoice;
+            string computerChoise;
+            int winCalculator;
+            int playerWinCount = 0;
+            int computerWinCount = 0;
 
             Console.WriteLine("This is a game of rock paper scissors between you and the computer!");
-            System.Console.Write("Write your choice between the three options: ");
-            choice = Console.ReadLine();
+            System.Console.Write("Write your playerChoice between the three options: ");
+            playerChoice = Console.ReadLine();
 
-            while (choice.ToLower() != "rock" && choice.ToLower() != "paper" && choice.ToLower() != "scissors")
+            // Checks to see that a valid answer has been written, otherwise replays till a valid answer is given
+            while (playerChoice.ToLower() != "rock" && playerChoice.ToLower() != "paper" && playerChoice.ToLower() != "scissors")
             {
                 System.Console.WriteLine("Your answer was invalid, try again and make sure you spelled it right. ");
-                choice = Console.ReadLine();
+                playerChoice = Console.ReadLine();
             }
 
             Console.Clear();
+            computerChoise = ComputersChoice();
 
-            System.Console.WriteLine("Your choice: " + choice);
-            System.Console.WriteLine("The computers choice: " + ComputersChoice());
+            System.Console.WriteLine("Your playerChoice: " + playerChoice);
+            System.Console.WriteLine("The computers playerChoice: " + computerChoise);
+
+            winCalculator = CalculateResult(playerChoice, computerChoise);
 
 
+            switch (winCalculator)
+            {
+                case 1:
+                    System.Console.WriteLine("The player wins!");
+                    playerWinCount++;
+                    break;
+                case 2:
+                    System.Console.WriteLine("The computer wins");
+                    computerWinCount++;
+                    break;
+                case 3:
+                    System.Console.WriteLine("Both chose the same option, it's a tie!");
+                    break;
+
+                default:
+                break;
+            }
+
+            
 
             Console.ReadKey();
         }
 
         static string ComputersChoice()
         {
-            string choice;
+            string playerChoice;
             Random random = new Random();
             int randomNumber = random.Next(0,3);
 
             switch (randomNumber)
             {
                 case 0:
-                    choice = "rock";
+                    playerChoice = "rock";
                     break;
 
                 case 1:
-                    choice = "paper";
+                    playerChoice = "paper";
                     break;
 
                 case 2: 
-                    choice = "scissors";
+                    playerChoice = "scissors";
                     break;
 
                 default:
-                    choice = null;
+                    playerChoice = null;
                     break;
             }
 
-            return choice;
+            return playerChoice;
         }
 
-        static int PlayerWins(string playerChoice, string computerChoice)
+        static int CalculateResult(string playerChoice, string computerChoice)
         {
             int winnerNumber;
 
@@ -86,5 +112,6 @@ namespace Uppgift_09_Repo
             
             return winnerNumber;
         }
+        
     }
 }
