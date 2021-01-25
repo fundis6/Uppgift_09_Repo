@@ -15,10 +15,43 @@ namespace Uppgift_09_Repo
             while (choice.ToLower() != "rock" && choice.ToLower() != "paper" && choice.ToLower() != "scissors")
             {
                 System.Console.WriteLine("Your answer was invalid, try again and make sure you spelled it right. ");
-                choice = Console.ReadLine();    
+                choice = Console.ReadLine();
             }
 
+            Console.Clear();
+
+            System.Console.WriteLine("Your choice: " + choice);
+            System.Console.WriteLine("The computers choice: " + ComputersChoice());
+
             Console.ReadKey();
+        }
+
+        static string ComputersChoice()
+        {
+            string choice;
+            Random random = new Random();
+            int randomNumber = random.Next(0,3);
+
+            switch (randomNumber)
+            {
+                case 0:
+                    choice = "rock";
+                    break;
+
+                case 1:
+                    choice = "paper";
+                    break;
+
+                case 2: 
+                    choice = "scissors";
+                    break;
+
+                default:
+                    choice = null;
+                    break;
+            }
+
+            return choice;
         }
     }
 }
