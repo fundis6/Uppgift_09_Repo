@@ -7,6 +7,8 @@ namespace Uppgift_09_Repo
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            Console.ReadKey();
         }
     }
 }
