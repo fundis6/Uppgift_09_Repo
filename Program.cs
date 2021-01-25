@@ -19,7 +19,7 @@ namespace Uppgift_09_Repo
                 
             
                 Console.WriteLine("This is a game of rock paper scissors between you and the computer!");
-                System.Console.Write("Write your playerChoice between the three options: ");
+                System.Console.Write("Write your choice between the three options: ");
                 playerChoice = Console.ReadLine();
 
                 // Checks to see that a valid answer has been written, otherwise replays till a valid answer is given
@@ -32,8 +32,8 @@ namespace Uppgift_09_Repo
                 Console.Clear();
                 computerChoise = ComputersChoice();
 
-                System.Console.WriteLine("Your playerChoice: " + playerChoice);
-                System.Console.WriteLine("The computers playerChoice: " + computerChoise);
+                System.Console.WriteLine("Your choice: " + playerChoice);
+                System.Console.WriteLine("The computers choice: " + computerChoise);
 
                 winCalculator = CalculateResult(playerChoice, computerChoise);
 
@@ -69,6 +69,7 @@ namespace Uppgift_09_Repo
                     System.Console.WriteLine("Invalid answer, try again");
                     restart = Console.ReadLine();
                 }
+                Console.Clear();
 
             }
 
