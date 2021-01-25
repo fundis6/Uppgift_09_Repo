@@ -12,46 +12,67 @@ namespace Uppgift_09_Repo
             int winCalculator;
             int playerWinCount = 0;
             int computerWinCount = 0;
+            string restart = "yes";
 
-            Console.WriteLine("This is a game of rock paper scissors between you and the computer!");
-            System.Console.Write("Write your playerChoice between the three options: ");
-            playerChoice = Console.ReadLine();
-
-            // Checks to see that a valid answer has been written, otherwise replays till a valid answer is given
-            while (playerChoice.ToLower() != "rock" && playerChoice.ToLower() != "paper" && playerChoice.ToLower() != "scissors")
+            while (restart == "yes")
             {
-                System.Console.WriteLine("Your answer was invalid, try again and make sure you spelled it right. ");
-                playerChoice = Console.ReadLine();
-            }
-
-            Console.Clear();
-            computerChoise = ComputersChoice();
-
-            System.Console.WriteLine("Your playerChoice: " + playerChoice);
-            System.Console.WriteLine("The computers playerChoice: " + computerChoise);
-
-            winCalculator = CalculateResult(playerChoice, computerChoise);
-
-
-            switch (winCalculator)
-            {
-                case 1:
-                    System.Console.WriteLine("The player wins!");
-                    playerWinCount++;
-                    break;
-                case 2:
-                    System.Console.WriteLine("The computer wins");
-                    computerWinCount++;
-                    break;
-                case 3:
-                    System.Console.WriteLine("Both chose the same option, it's a tie!");
-                    break;
-
-                default:
-                break;
-            }
-
+                
             
+                Console.WriteLine("This is a game of rock paper scissors between you and the computer!");
+                System.Console.Write("Write your playerChoice between the three options: ");
+                playerChoice = Console.ReadLine();
+
+                // Checks to see that a valid answer has been written, otherwise replays till a valid answer is given
+                while (playerChoice.ToLower() != "rock" && playerChoice.ToLower() != "paper" && playerChoice.ToLower() != "scissors")
+                {
+                    System.Console.WriteLine("Your answer was invalid, try again and make sure you spelled it right. ");
+                    playerChoice = Console.ReadLine();
+                }
+
+                Console.Clear();
+                computerChoise = ComputersChoice();
+
+                System.Console.WriteLine("Your playerChoice: " + playerChoice);
+                System.Console.WriteLine("The computers playerChoice: " + computerChoise);
+
+                winCalculator = CalculateResult(playerChoice, computerChoise);
+
+
+                switch (winCalculator)
+                {
+                    case 1:
+                        System.Console.WriteLine("The player wins!");
+                        playerWinCount++;
+                        break;
+                    case 2:
+                        System.Console.WriteLine("The computer wins");
+                        computerWinCount++;
+                        break;
+                    case 3:
+                        System.Console.WriteLine("Both chose the same option, it's a tie!");
+                        break;
+
+                    default:
+                    break;
+                }
+
+                System.Console.WriteLine();
+                System.Console.WriteLine("Player Win-Count: " + playerWinCount);
+                System.Console.WriteLine("Computer Win-Count: " + computerWinCount);
+                System.Console.WriteLine();
+
+                System.Console.WriteLine("Do you wish to play again? (yes/no)");
+                restart = Console.ReadLine();
+
+                while (restart != "yes" && restart != "no")
+                {
+                    System.Console.WriteLine("Invalid answer, try again");
+                    restart = Console.ReadLine();
+                }
+
+            }
+
+            System.Console.WriteLine("Press any key to exit");
 
             Console.ReadKey();
         }
